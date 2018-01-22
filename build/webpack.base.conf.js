@@ -10,8 +10,7 @@ function resolve(dir) {
 }
 
 const generateConfig = env => {
-  require('./util.loader').env = env
-  const utilLoaders = require('./util.loader')
+  const utilLoaders = require('./util.loader')(env)
 	return {
 		entry: {
 			app: './src/app.js'

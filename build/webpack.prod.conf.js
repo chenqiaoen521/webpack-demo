@@ -7,7 +7,9 @@ const glob = require('glob-all')
 module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(
-            ['../dist']
+            ['../dist'],{
+            	allowExternal: true
+            }
         ),
 		new webpack.optimize.UglifyJsPlugin(),
 		new PurifyWebpack({

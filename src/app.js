@@ -1,5 +1,5 @@
 import './less/index.less'
-
+import './assets/web-icons/web-icons.less'
 let func = () => {
   console.log('this is function')
   console.log('this is jinxue')
