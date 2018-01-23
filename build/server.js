@@ -10,8 +10,20 @@ const historyApiFallback = require('connect-history-api-fallback')
 const config = require('./webpack.base.conf.js')('development')
 const compiler = webpack(config)
 
+const proxyTable = require('./proxy')
+
+
+const history = require('./historyfallback')
+
 const app = express()
 const port = 3000
+
+Object.keys(proxyTable).forEach(function (context) {
+  var options = proxyTable[context]
+  app.use(proxyMiddleware(context, options))
+})
+
+app.use(historyApiFallback(history))
 
 app.use(devMiddleware(compiler, {
   publicPath: config.output.publicPath,
@@ -22,6 +34,9 @@ app.use(hotMiddleware(compiler,{
   log: false,
   heartbeat: 2000
 }))
+
+
+
 
 app.use(express.static('./static'))
 
