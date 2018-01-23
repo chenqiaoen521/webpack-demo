@@ -78,7 +78,7 @@ module.exports = function (env) {
 					ident: 'postcss',
 					scoureMap: isDev,
 					plugins: [
-						require('postcss-cssnext')()
+						require('postcss-cssnext')(),
 					].concat(
 						isProd ? require('postcss-sprites')({
 							spritePath: 'dist/assets/images/sprites',
