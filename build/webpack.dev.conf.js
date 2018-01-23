@@ -8,7 +8,7 @@ module.exports = {
 		port: 9001,
 		overlay: true,
 		hot: true,
-    hotonly: true,
+    hotOnly: true,
 		proxy,
 		historyApiFallback: history
 	},

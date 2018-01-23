@@ -1,7 +1,7 @@
 module.exports = {
   '/': {
     target: 'https//m.weibo.cn',
-    changeOrange: true,
+    changeOrigin: true,
     logLevel: 'debug',
     pathRewrite: {
       '^/comments': '/api/comments'
