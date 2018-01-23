@@ -1,6 +1,6 @@
 module.exports = {
-  '/': {
-    target: 'https//m.weibo.cn',
+  '/.+': {
+    target: 'https://www.baidu.com',
     changeOrigin: true,
     logLevel: 'debug',
     pathRewrite: {
