@@ -7,5 +7,4 @@ let func = () => {
   div.className = 'box'
   document.body.appendChild(div)
 }
-
 func()

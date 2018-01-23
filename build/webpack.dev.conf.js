@@ -5,6 +5,8 @@ module.exports = {
 	devServer: {
 		port: 9001,
 		overlay: true,
+		hot: true,
+		hotOnly: true,
 		proxy: {
 			'/': {
 				target: 'https//m.weibo.cn',
@@ -15,20 +17,18 @@ module.exports = {
 				},
 				headers: {
 					'Cookie': 'sadadad'
-				},
-				hot: true,
-				hotonly: true,
-				historyApiFallback: {
-					rewrites: [
-						{
-							from: /^\/([a-zA-Z0-9]+\/?)([a-zA-Z0-9]+)/,
-							to: function (context) {
-								return '/' + context.match[1] + context.match[2] + '.html'
-							}
-						}
-					]
 				}
 			}
+		},
+		historyApiFallback: {
+			rewrites: [
+				{
+					from: /^\/([a-zA-Z0-9]+\/?)([a-zA-Z0-9]+)/,
+					to: function (context) {
+						return '/' + context.match[1] + context.match[2] + '.html'
+					}
+				}
+			]
 		}
 	},
 
