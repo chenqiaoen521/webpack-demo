@@ -19,12 +19,7 @@ module.exports = {
 				'./src/*.js'
 			])
 		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'manifest'
-		}),
-		new HtmlInlinkChunkPlugin({
-			inlineChunks: ['manifest']
-		}),
+		
 		new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname,'../index.html'),
@@ -54,9 +49,15 @@ module.exports = {
     }),
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
-    new webpack.optimize.CommonsChunkPlugin({
+/*    new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
-    })
+    }),*/
+    new webpack.optimize.CommonsChunkPlugin({
+			name: 'manifest'
+		}),
+    new HtmlInlinkChunkPlugin({
+			inlineChunks: ['manifest']
+		}),
 	]
 }
