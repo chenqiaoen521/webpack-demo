@@ -1,13 +1,12 @@
 const express = require('express')
 const webpack = require('webpack')
 const opn = require('opn')
+const path = require('path')
 
 const proxyMiddleware = require('http-proxy-middleware')
 const historyApiFallback = require('connect-history-api-fallback')
 
 const config = require('./webpack.base.conf.js')('development')
-console.log(config)
-
 const compiler = webpack(config)
 
 const proxyTable = require('./proxy')
@@ -45,7 +44,7 @@ app.use(devMiddleware)
 
 app.use(hotMiddleware)
 
-app.use(express.static('./static'))
+app.use('/static', express.static(path.resolve(__dirname, '../static')))
 
 const uri = 'http://localhost:' + port
 
