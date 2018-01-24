@@ -15,8 +15,7 @@ module.exports = function (env) {
 		isProd ? [] : [{
 			loader: 'eslint-loader',
 			options: {
-	  		formatter: require('eslint-friendly-formatter'),
-	  		formatter: require("eslint/lib/formatters/stylish")
+	  		formatter: require('eslint-friendly-formatter')
 			}
 		}]
 	)

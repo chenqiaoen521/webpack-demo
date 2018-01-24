@@ -6,6 +6,8 @@ const proxyMiddleware = require('http-proxy-middleware')
 const historyApiFallback = require('connect-history-api-fallback')
 
 const config = require('./webpack.base.conf.js')('development')
+console.log(config)
+
 const compiler = webpack(config)
 
 const proxyTable = require('./proxy')

@@ -1,6 +1,5 @@
 const productionConfig = require('./webpack.prod.conf')
 const devlelopmentConfig = require('./webpack.dev.conf')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const merge = require('webpack-merge')
 const webpack = require('webpack')
@@ -13,7 +12,7 @@ const generateConfig = env => {
   const utilLoaders = require('./util.loader')(env)
 	return {
 		entry: {
-			app: './src/app.js'
+      app: './src/app.js'
 		},
 		output: {
 			path: resolve('dist'),
@@ -55,21 +54,6 @@ const generateConfig = env => {
       /*new webpack.ProvidePlugin({
         $: 'jquery'
       }),*/
-  		new HtmlWebpackPlugin({
-  			filename: 'index.html',
-  			template:  resolve('index.html'),
-  			inject: true,
-        minify: {
-          removeComments: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true
-          // more options:
-          // https://github.com/kangax/html-minifier#options-quick-reference
-        },
-        // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-        chunksSortMode: 'dependency'
-    		})
-  		
   	]
   }
 }
@@ -79,5 +63,12 @@ const generateConfig = env => {
 
 module.exports = env => {
 	let config = env === 'production' ? productionConfig : devlelopmentConfig
-	return merge(generateConfig(env), config)
+  let baseWebpackConfig = generateConfig(env)
+  if (env === 'development') {
+    // add hot-reload related code to entry chunks
+    Object.keys(baseWebpackConfig.entry).forEach(function (name) {
+      baseWebpackConfig.entry[name] = [resolve('build/dev-client')].concat(baseWebpackConfig.entry[name])
+    })
+  }
+	return merge(baseWebpackConfig, config)
 }
