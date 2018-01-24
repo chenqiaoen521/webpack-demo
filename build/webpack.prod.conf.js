@@ -4,6 +4,7 @@ const PurifyWebpack = require('purifycss-webpack')
 const HtmlInlinkChunkPlugin = require('html-webpack-inline-chunk-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const path = require('path')
 const glob = require('glob-all')
@@ -15,7 +16,13 @@ module.exports = {
             }
         ),
 		new webpack.optimize.UglifyJsPlugin(),
-		
+		new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static'),
+        to: 'static',
+        ignore: ['.*']
+      }
+    ]),
 		new PurifyWebpack({
 			paths: glob.sync([
 				'./*.html',
