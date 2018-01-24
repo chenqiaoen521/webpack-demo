@@ -3,6 +3,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const PurifyWebpack = require('purifycss-webpack') 
 const HtmlInlinkChunkPlugin = require('html-webpack-inline-chunk-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+
 const path = require('path')
 const glob = require('glob-all')
 module.exports = {
@@ -13,13 +15,18 @@ module.exports = {
             }
         ),
 		new webpack.optimize.UglifyJsPlugin(),
+		
 		new PurifyWebpack({
 			paths: glob.sync([
 				'./*.html',
 				'./src/*.js'
 			])
 		}),
-		
+		new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true
+      }
+    }),
 		new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname,'../index.html'),

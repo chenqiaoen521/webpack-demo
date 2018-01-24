@@ -50,17 +50,13 @@ const generateConfig = env => {
     	]
   	},
   	plugins: [
-  		utilLoaders.extractLess,
-      /*new webpack.ProvidePlugin({
+  		utilLoaders.extractLess/*,
+      new webpack.ProvidePlugin({
         $: 'jquery'
       }),*/
   	]
   }
 }
-
-
-
-
 module.exports = env => {
 	let config = env === 'production' ? productionConfig : devlelopmentConfig
   let baseWebpackConfig = generateConfig(env)
