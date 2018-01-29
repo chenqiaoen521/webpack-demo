@@ -55,7 +55,7 @@ module.exports = {
           module.resource &&
           /\.js$/.test(module.resource) &&
           module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
+            path.join(__dirname, '../src/libs')
           ) === 0
         )
       }
@@ -67,7 +67,8 @@ module.exports = {
       chunks: ['vendor']
     }),*/
     new webpack.optimize.CommonsChunkPlugin({
-			name: 'manifest'
+			name: 'manifest',
+      minChunks: Infinity
 		}),
     new HtmlInlinkChunkPlugin({
 			inlineChunks: ['manifest']

@@ -18,13 +18,19 @@ const generateConfig = env => {
 			path: resolve('dist'),
 			publicPath: env === 'production' ? '' : '/',
 			filename: 'js/[name]-bundle-[hash:5].js',
-      chunkFilename: 'js/[name]-chunk-[hash:5].js'
+      chunkFilename: 'js/[name]-chunk-[hash:5].js',
+      libraryTarget: "umd"
 		},
+    externals: {
+      jquery: "jQuery"
+    },
 		resolve: {
 	    extensions: ['.js', '.json'],
 	    alias: {
-	      '@': resolve('src')/*,
-	      jquery$: resolve('src/libs/jquery.js')*/
+	      '@': resolve('src'),
+        jquery$: resolve('src/libs/jquery.js'),
+        bootstrap: resolve('src/libs/bootstrap.js'),
+	      bootstrapSelect$: resolve('src/libs/bootstrap-select.min.js')
 	    }
 	  },
 	  module: {
@@ -46,14 +52,26 @@ const generateConfig = env => {
     		{
     			test: /\.(eot|woff2?|ttf|svg)$/,
     			use: utilLoaders.fontLoader
-    		}
+    		},
+        {
+          test: /\.html$/,
+          use: [{
+            loader: 'html-loader',
+            options: {
+              attrs: ['img:src', 'img:data-src']
+            }
+          }]
+        }
     	]
   	},
   	plugins: [
-  		utilLoaders.extractLess/*,
+  		utilLoaders.extractLess,
       new webpack.ProvidePlugin({
-        $: 'jquery'
-      }),*/
+        $: "jquery",
+        jquery: "jquery",
+        "windows.jQuery": "jquery",
+        jQuery:"jquery"
+      })
   	]
   }
 }
