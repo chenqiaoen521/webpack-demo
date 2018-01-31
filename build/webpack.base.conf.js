@@ -18,18 +18,14 @@ const generateConfig = env => {
 			path: resolve('dist'),
 			publicPath: env === 'production' ? '' : '/',
 			filename: 'js/[name]-bundle-[hash:5].js',
-      chunkFilename: 'js/[name]-chunk-[hash:5].js',
-      libraryTarget: "umd"
+      chunkFilename: 'js/[name]-chunk-[hash:5].js'
 		},
-    externals: {
-      jquery: "jQuery"
-    },
 		resolve: {
 	    extensions: ['.js', '.json'],
 	    alias: {
 	      '@': resolve('src'),
         jquery$: resolve('src/libs/jquery.js'),
-        bootstrap: resolve('src/libs/bootstrap.js'),
+        bootstrap$: resolve('src/libs/bootstrap.js'),
 	      bootstrapSelect$: resolve('src/libs/bootstrap-select.min.js')
 	    }
 	  },
@@ -70,7 +66,7 @@ const generateConfig = env => {
         $: "jquery",
         jquery: "jquery",
         "windows.jQuery": "jquery",
-        jQuery:"jquery"
+        jQuery: "jquery"
       })
   	]
   }

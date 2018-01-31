@@ -4,6 +4,26 @@ import 'bootstrapSelect'
 if (module.hot) {
   module.hot.accept()
 }
+
+let func = function* () {
+  yield 1
+  yield 2
+  yield 3
+}
+
+let promis = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(1)
+  }, 1000)
+})
+
+promis.then((e) => {
+  console.log(e)
+})
+
+let ite = func()
+console.log(ite.next())
+
 /* eslint-disable no-undef */
 $('textarea.hook-textarea').on('keyup keydown', function() {
   $(this).parents('.panel.pd15').css({'height': 'auto'})
