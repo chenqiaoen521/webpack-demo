@@ -32,7 +32,7 @@ module.exports = function (env) {
 		loader: 'url-loader',
 		options: {
 			name: '[name]-[hash:5].[ext]',
-			limit: 2000,
+			limit: 1024,
 			outputPath: 'assets/fonts/'
 		}
 	}]
@@ -49,8 +49,9 @@ module.exports = function (env) {
 			loader: 'url-loader',
 			options: {
 				name: '[name]-[hash:5].[ext]',
-				limit: 2000,
-				outputPath: 'assets/images/'
+				limit: 1024,
+				outputPath: '../assets/images/',
+				useRelativePath: true
 			}
 		},
 		{
