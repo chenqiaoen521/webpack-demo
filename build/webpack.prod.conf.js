@@ -51,6 +51,8 @@ module.exports = {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
+    new webpack.NamedChunksPlugin(), //   长缓存 命名优化
+    new webpack.NamedModulesPlugin(), //  长缓存 命名优化
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module, count) {
