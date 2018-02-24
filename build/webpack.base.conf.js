@@ -17,8 +17,8 @@ const generateConfig = env => {
 		output: {
 		    path: resolve('dist'),
 		    publicPath: env === 'production' ? '/' : '',
-		    filename: 'js/[name]-bundle-[hash:5].js',
-      		    chunkFilename: 'js/[name]-chunk-[hash:5].js'
+		    filename: 'js/[name]-bundle-[chunkhash:5].js' //长缓存优化  
+      		   // chunkFilename: 'js/[name]-chunk-[hash:5].js'
 		},
 		resolve: {
 	    extensions: ['.js', '.json'],
