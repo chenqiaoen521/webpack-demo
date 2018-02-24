@@ -61,14 +61,14 @@ const generateConfig = env => {
     	]
   	},
   	plugins: [
-  		utilLoaders.extractLess,
-      new webpack.ProvidePlugin({
-        $: "jquery",
-        jquery: "jquery",
-        "windows.jQuery": "jquery",
-        jQuery: "jquery"
-      })
-  	]
+  	  utilLoaders.extractLess,
+          new webpack.ProvidePlugin({
+	     $: "jquery",
+	     jquery: "jquery",
+	     "windows.jQuery": "jquery",
+	     jQuery: "jquery"
+          })
+       ]
   }
 }
 module.exports = env => {
@@ -80,5 +80,5 @@ module.exports = env => {
       baseWebpackConfig.entry[name] = [resolve('build/dev-client')].concat(baseWebpackConfig.entry[name])
     })
   }
-	return merge(baseWebpackConfig, config)
+  return merge(baseWebpackConfig, config)
 }
