@@ -12,13 +12,13 @@ const generateConfig = env => {
   const utilLoaders = require('./util.loader')(env)
 	return {
 		entry: {
-      app: './src/app.js'
+      		    app: './src/app.js'
 		},
 		output: {
-			path: resolve('dist'),
-			publicPath: env === 'production' ? '' : '/',
-			filename: 'js/[name]-bundle-[hash:5].js',
-      chunkFilename: 'js/[name]-chunk-[hash:5].js'
+		    path: resolve('dist'),
+		    publicPath: env === 'production' ? '/' : '',
+		    filename: 'js/[name]-bundle-[hash:5].js',
+      		    chunkFilename: 'js/[name]-chunk-[hash:5].js'
 		},
 		resolve: {
 	    extensions: ['.js', '.json'],
