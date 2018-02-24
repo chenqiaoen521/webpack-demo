@@ -32,7 +32,7 @@ module.exports = function (env) {
 		options: {
 			name: '[name]-[hash:5].[ext]',
 			limit: 1024,,
-			outputPath: '../assets/images/',
+			outputPath: 'assets/images/',
 			useRelativePath: true
 		}
 	}]
