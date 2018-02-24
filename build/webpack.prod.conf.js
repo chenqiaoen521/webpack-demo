@@ -14,7 +14,11 @@ module.exports = {
             	allowExternal: true
             }
         ),
-		/*new webpack.optimize.UglifyJsPlugin(),*/
+		new webpack.optimize.UglifyJsPlugin({
+		    sourceMap: true,
+			parallel: true,
+			cache: true
+		}),
 		new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),
