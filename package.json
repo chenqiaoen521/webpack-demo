@@ -1,10 +1,10 @@
 {
-  "name": "webpack-demo",
+  "name": "webpack-template-jquery-plugin",
   "version": "1.0.0",
-  "description": "",
+  "description": "webpack-template",
+  "keywords": "webpack,template,jquery,plugin",
   "main": "index.js",
   "scripts": {
-    "server": "webpack-dev-server --env development --open --config build/webpack.base.conf.js",
     "start": "node build/server.js",
     "build": "webpack --env production --config build/webpack.base.conf.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -70,5 +70,5 @@
     "not ie <= 8"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }
