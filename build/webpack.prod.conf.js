@@ -41,13 +41,13 @@ module.exports = {
       filename: 'index.html',
       template: path.resolve(__dirname,'../index.html'),
       inject: true,
-      minify: {
+      /*minify: {
         removeComments: true,
         collapseWhitespace: true,
         removeAttributeQuotes: true
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
-      },
+      },*/
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
@@ -61,14 +61,16 @@ module.exports = {
           module.resource &&
           /\.js$/.test(module.resource) &&
           module.resource.indexOf(
-            path.join(__dirname, '../src/libs')
+            path.join(__dirname, '../node_modules')  //../src/libs
+          ) === 0 || module.resource.indexOf(
+            path.join(__dirname, '../src/libs')  //../src/libs
           ) === 0
         )
       }
     }),
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
-/*    new webpack.optimize.CommonsChunkPlugin({
+    /*new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
     }),*/
@@ -76,8 +78,8 @@ module.exports = {
 			name: 'manifest',
       minChunks: Infinity
 		}),
-    new HtmlInlinkChunkPlugin({
+    /*new HtmlInlinkChunkPlugin({
 			inlineChunks: ['manifest']
-		}),
+		}),*/
 	]
 }

@@ -6,12 +6,12 @@ const path = require('path')
 const config = require('./webpack.base.conf.js')('development')
 const compiler = webpack(config)
 // force page reload when html-webpack-plugin template changes
-/*compiler.plugin('compilation', function (compilation) {
+compiler.plugin('compilation', function (compilation) {
   compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
     hotMiddleware.publish({ action: 'reload' })
     cb()
   })
-})*/
+})
 
 const proxyMiddleware = require('http-proxy-middleware')
 const historyApiFallback = require('connect-history-api-fallback')

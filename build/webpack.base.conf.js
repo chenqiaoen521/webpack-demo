@@ -17,8 +17,8 @@ const generateConfig = env => {
 		output: {
 		    path: resolve('dist'),
 		    publicPath: env === 'production' ? '/' : '',
-		    filename: 'js/[name]-bundle-[chunkhash:5].js' //长缓存优化  
-      		   // chunkFilename: 'js/[name]-chunk-[hash:5].js'
+		    filename: 'js/[name]-bundle-[hash:5].js', //长缓存优化  
+      	chunkFilename: 'js/[name]-chunk-[chunkhash:5].js'
 		},
 		resolve: {
 	    extensions: ['.js', '.json'],
@@ -62,13 +62,13 @@ const generateConfig = env => {
   	},
   	plugins: [
   	  utilLoaders.extractLess,
-          new webpack.ProvidePlugin({
-	     $: "jquery",
-	     jquery: "jquery",
-	     "windows.jQuery": "jquery",
-	     jQuery: "jquery"
-          })
-       ]
+      new webpack.ProvidePlugin({
+	      $: "jquery",
+	      jquery: "jquery",
+	      "windows.jQuery": "jquery",
+	      jQuery: "jquery"
+      })
+    ]
   }
 }
 module.exports = env => {

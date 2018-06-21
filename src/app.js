@@ -23,6 +23,9 @@ promis.then((e) => {
 
 let ite = func()
 console.log(ite.next())
+console.log(1)
+console.log(12)
+console.log(123)
 
 /* eslint-disable no-undef */
 $('textarea.hook-textarea').on('keyup keydown', function() {
