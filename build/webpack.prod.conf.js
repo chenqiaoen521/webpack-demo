@@ -10,12 +10,12 @@ const glob = require('glob-all')
 module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(
-            ['../dist'],{
-            	allowExternal: true
-            }
-        ),
+        ['../dist'],{
+        	allowExternal: true
+        }
+      ),
 		new webpack.optimize.UglifyJsPlugin({
-		    sourceMap: true,
+	    sourceMap: true,
 			parallel: true,
 			cache: true
 		}),
