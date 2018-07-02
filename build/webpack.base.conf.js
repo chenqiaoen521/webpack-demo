@@ -24,7 +24,7 @@ const generateConfig = env => {
 	    extensions: ['.js', '.json'],
 	    alias: {
 	      '@': resolve('src'),
-        jquery$: resolve('src/libs/jquery.js'),
+        //jquery$: resolve('src/libs/jquery.js'),
         bootstrap$: resolve('src/libs/bootstrap.js'),
 	      bootstrapSelect$: resolve('src/libs/bootstrap-select.min.js')
 	    }
@@ -60,14 +60,17 @@ const generateConfig = env => {
         }
     	]
   	},
+    externals: {
+      jquery: 'jQuery'
+    },
   	plugins: [
-  	  utilLoaders.extractLess,
+  	  utilLoaders.extractLess/*,
       new webpack.ProvidePlugin({
 	      $: "jquery",
 	      jquery: "jquery",
 	      "windows.jQuery": "jquery",
 	      jQuery: "jquery"
-      })
+      })*/
     ]
   }
 }

@@ -1,6 +1,7 @@
 import './less/index.less'
 import 'bootstrap'
 import 'bootstrapSelect'
+import $ from 'jquery'
 if (module.hot) {
   module.hot.accept()
 }
